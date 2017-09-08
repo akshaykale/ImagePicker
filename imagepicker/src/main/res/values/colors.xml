@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D94658</color>
+    <color name="colorPrimaryDark">#c23244</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="cluster_text_back">#d0474c</color>
+    <color name="cluster_text_textcolour">#ffffff</color>
+
+    <color name="rating_normal">#8f7406</color>
+    <color name="rating_activated">#fdd73e</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBackground">#F6F6F6</color>
+    <color name="colorGrey">#c0c0c0</color>
+    <color name="colorTrans">#00000000</color>
+</resources>
