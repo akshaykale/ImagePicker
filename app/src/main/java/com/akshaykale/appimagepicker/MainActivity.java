@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.akshaykale.imagepicker.ImagePickerFragment;
 import com.akshaykale.imagepicker.ImagePickerListener;
 import com.akshaykale.imagepicker.PhotoObject;
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity implements ImagePickerListener, View.OnClickListener {
 
@@ -42,13 +43,17 @@ public class MainActivity extends AppCompatActivity implements ImagePickerListen
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             imagePickerFragment = new ImagePickerFragment();//.newInstance(mStackLevel);
             imagePickerFragment.addOnClickListener(this);
+            //imagePickerFragment.setImageLoadEngine(new ILoad());
             imagePickerFragment.show(ft, "dialog");
         }
     }
 
     @Override
     public void onPhotoClicked(PhotoObject photoObject) {
-        imageView.setImageBitmap(photoObject.getBitmap());
+        imageView.setImageDrawable(null);
+        Glide.with(getApplicationContext())
+                .load(photoObject.getPath())
+                .into(imageView);
         imagePickerFragment.dismiss();
     }
 

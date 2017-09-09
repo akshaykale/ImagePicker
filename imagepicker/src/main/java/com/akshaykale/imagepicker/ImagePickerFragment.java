@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
@@ -41,6 +43,8 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
 
     ArrayList<PhotoObject> photos = new ArrayList<>();
     private String TAG = getClass().getSimpleName();
+
+    ImageLoadEngine imageLoadEngine = new ImageLoad();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -90,7 +94,7 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
     private void setupRecyclerView() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
-        imagePickerRecyclerViewAdapter = new ImagePickerRecyclerViewAdapter(photos, getContext(), this);
+        imagePickerRecyclerViewAdapter = new ImagePickerRecyclerViewAdapter(photos, getContext(), this, imageLoadEngine);
         recyclerView.setAdapter(imagePickerRecyclerViewAdapter);
     }
 
@@ -194,5 +198,9 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
 
     public void disableDefaultCameraFunction(boolean status){
         DISABLE_CAMERA_DEFAULT = status;
+    }
+
+    public void setImageLoadEngine(ImageLoadEngine engine){
+        imageLoadEngine = engine;
     }
 }

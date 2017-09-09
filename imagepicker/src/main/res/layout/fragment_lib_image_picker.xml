@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorGrey">
+    android:background="@color/colorWhite">
 
     <include layout="@layout/layout_image_picker_action_bar"/>
 
@@ -23,34 +23,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-        <!--<android.support.design.widget.TabLayout
-            android:id="@+id/sliding_tabs_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="fixed"
-            app:tabTextColor="@color/colorBlack"
-            app:tabBackground="@color/colorWhite"
-            app:tabIndicatorColor="@color/colorPrimaryDark"
-            app:tabSelectedTextColor="@color/colorPrimaryDark"/>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"/>-->
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:background="@color/colorPrimary"
         >
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="Press and hold to select multiple photos."
+            android:text="Select the photo."
             android:textColor="@color/colorWhite"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_weight="1"/>

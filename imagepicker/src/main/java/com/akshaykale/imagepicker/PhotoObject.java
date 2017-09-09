@@ -16,17 +16,8 @@ public class PhotoObject {
     String picasa_id;
     double lat,lng;
 
-
-
-    Bitmap bitmap;
-
-
     public PhotoObject(EItemType eItemType) {
         this.eItemType = eItemType;
-    }
-
-    public Bitmap getBitmap() {
-        return bitmap;
     }
 
     public String getName() {

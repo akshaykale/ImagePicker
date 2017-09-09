@@ -25,7 +25,7 @@ class GetDevicePhotosTask extends AsyncTask<Void,Void,ArrayList<PhotoObject>> {
             MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
             MediaStore.Images.Media.LATITUDE,
             MediaStore.Images.Media.LONGITUDE,
-            MediaStore.Images.Media.PICASA_ID
+            MediaStore.Images.Media.PICASA_ID,
     };
 
     String orderBy = MediaStore.Images.Media.DATE_TAKEN;

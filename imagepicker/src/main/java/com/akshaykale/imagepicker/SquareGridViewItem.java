@@ -10,21 +10,25 @@ import android.util.AttributeSet;
 class SquareGridViewItem extends android.support.v7.widget.AppCompatImageView {
     public SquareGridViewItem(Context context) {
         super(context);
-        setScaleType(ScaleType.CENTER_CROP);
+        setUp();
     }
 
     public SquareGridViewItem(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setScaleType(ScaleType.CENTER_CROP);
+        setUp();
     }
 
     public SquareGridViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setScaleType(ScaleType.CENTER_CROP);
+        setUp();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
+    }
+
+    private void setUp(){
+        setScaleType(ScaleType.CENTER_CROP);
     }
 }

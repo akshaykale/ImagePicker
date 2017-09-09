@@ -2,12 +2,15 @@ package com.akshaykale.imagepicker;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,11 +24,14 @@ class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePickerRec
     ArrayList<PhotoObject> photos;
     Context context;
     private IPhotoClickListeners photoClickListeners;
+    private int thumbFactor = 2;
+    ImageLoadEngine imageLoad;
 
-    public ImagePickerRecyclerViewAdapter(ArrayList<PhotoObject> photos, Context context, IPhotoClickListeners photoClickListeners) {
+    public ImagePickerRecyclerViewAdapter(ArrayList<PhotoObject> photos, Context context, IPhotoClickListeners photoClickListeners, ImageLoadEngine engine) {
         this.photos = photos;
         this.context = context;
         this.photoClickListeners = photoClickListeners;
+        this.imageLoad = engine;
     }
 
     @Override
@@ -46,6 +52,8 @@ class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePickerRec
         if (photoObject.eItemType == EItemType.CAMERA){
             holder.image.setImageResource(R.drawable.ico_camera_100_black);
             holder.image.setPadding(80,80,80,80);
+            holder.textView.setText("Open Camera");
+            holder.textView.setVisibility(View.VISIBLE);
             return;
         }
         if (photoObject.eItemType == EItemType.LOADING){
@@ -54,13 +62,13 @@ class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePickerRec
         }
 
         String uri = photos.get(position).path;
-        File imgFile = new  File(uri);
+        imageLoad.loadImage(uri,holder.image);
+    }
 
-        if(imgFile.exists()){
-            Bitmap myBitmap = Utils.decodeSampledBitmap(uri, 500, 500);
-            photos.get(position).bitmap = myBitmap;
-            holder.image.setImageBitmap(myBitmap);
-        }
+    @Override
+    public void onViewRecycled(PhotosRecyclerViewHolder holder) {
+        Glide.with(context).clear(holder.image);
+        super.onViewRecycled(holder);
     }
 
     @Override
@@ -76,11 +84,9 @@ class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePickerRec
         public ImageView image;
 
         public PhotosRecyclerViewHolder(View v) {
-
             super(v);
             image = (ImageView) v.findViewById(R.id.recycler_view_photo_image);
-            //textView = (TextView) v.findViewById(R.id.textview1);
-
+            textView = (TextView) v.findViewById(R.id.recycler_view_photo_text);
         }
 
         public void bindClickListener(final PhotoObject photo, final IPhotoClickListeners photoClickListeners){

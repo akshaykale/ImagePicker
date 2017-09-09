@@ -15,4 +15,5 @@
     <color name="colorBackground">#F6F6F6</color>
     <color name="colorGrey">#c0c0c0</color>
     <color name="colorTrans">#00000000</color>
+    <color name="colorTransGrey">#c6393939</color>
 </resources>
