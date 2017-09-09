@@ -7,11 +7,11 @@ import android.graphics.BitmapFactory;
  * Created by akshay.kale on 08/09/2017.
  */
 
-public class Utils {
+class Utils {
 
 
 
-    public static int calculateInSampleSize(
+    static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
@@ -33,7 +33,7 @@ public class Utils {
         return inSampleSize;
     }
 
-    public static Bitmap decodeSampledBitmap(String pathName,
+    static Bitmap decodeSampledBitmap(String pathName,
                                        int reqWidth, int reqHeight) {
 
         // First decode with inJustDecodeBounds=true to check dimensions

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by akshaykale on 2017/08/20.
  */
 
-public class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePickerRecyclerViewAdapter.PhotosRecyclerViewHolder> {
+class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePickerRecyclerViewAdapter.PhotosRecyclerViewHolder> {
 
     ArrayList<PhotoObject> photos;
     Context context;
@@ -41,12 +41,24 @@ public class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePi
     public void onBindViewHolder(final PhotosRecyclerViewHolder holder, final int position) {
         holder.bindClickListener(photos.get(position),photoClickListeners);
 
-        String uri = photos.get(position).path;
+        PhotoObject photoObject = photos.get(position);
 
+        if (photoObject.eItemType == EItemType.CAMERA){
+            holder.image.setImageResource(R.drawable.ico_camera_100_black);
+            holder.image.setPadding(80,80,80,80);
+            return;
+        }
+        if (photoObject.eItemType == EItemType.LOADING){
+            holder.image.setImageResource(R.drawable.placeholder);
+            return;
+        }
+
+        String uri = photos.get(position).path;
         File imgFile = new  File(uri);
 
         if(imgFile.exists()){
             Bitmap myBitmap = Utils.decodeSampledBitmap(uri, 500, 500);
+            photos.get(position).bitmap = myBitmap;
             holder.image.setImageBitmap(myBitmap);
         }
     }
@@ -57,7 +69,7 @@ public class ImagePickerRecyclerViewAdapter extends RecyclerView.Adapter<ImagePi
     }
 
 
-    public class PhotosRecyclerViewHolder extends RecyclerView.ViewHolder {
+    class PhotosRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textView;
 

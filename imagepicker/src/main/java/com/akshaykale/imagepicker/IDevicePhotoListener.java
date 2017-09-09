@@ -1,10 +1,12 @@
 package com.akshaykale.imagepicker;
 
+import java.util.ArrayList;
+
 /**
  * Created by akshay.kale on 08/09/2017.
  */
 
-public interface IDevicePhotoListener {
+interface IDevicePhotoListener {
 
-    void onPhotoLoaded(PhotoObject photo);
+    void onPhotosLoaded(ArrayList<PhotoObject> photos);
 }

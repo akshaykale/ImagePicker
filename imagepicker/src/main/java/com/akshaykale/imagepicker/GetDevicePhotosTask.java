@@ -7,11 +7,13 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
 
+import java.util.ArrayList;
+
 /**
  * Created by akshay.kale on 08/09/2017.
  */
 
-public class GetDevicePhotosTask extends AsyncTask<Void,Void,Void> {
+class GetDevicePhotosTask extends AsyncTask<Void,Void,ArrayList<PhotoObject>> {
 
     private IDevicePhotoListener callback;
     private Context context;
@@ -35,15 +37,15 @@ public class GetDevicePhotosTask extends AsyncTask<Void,Void,Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... params) {
-
+    protected ArrayList<PhotoObject> doInBackground(Void... params) {
+        ArrayList<PhotoObject> photoList = new ArrayList<>();
         try {
             Cursor cursor = context.getContentResolver().query(uri, columns, null, null, orderBy);
             assert cursor != null;
             int mCount = cursor.getCount();
             for (int i = mCount - 1; i >= 0; i--) {
 
-                PhotoObject mPhoto = new PhotoObject();
+                PhotoObject mPhoto = new PhotoObject(EItemType.PHOTO);
 
                 cursor.moveToPosition(i);
 
@@ -80,17 +82,20 @@ public class GetDevicePhotosTask extends AsyncTask<Void,Void,Void> {
                     mPhoto.lng = locationConversion(lng_data);
                 }
 
-                callback.onPhotoLoaded(mPhoto);
+                //callback.onPhotoLoaded(mPhoto);
+                photoList.add(mPhoto);
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        return null;
+        return photoList;
     }
 
+    @Override
+    protected void onPostExecute(ArrayList<PhotoObject> photos) {
+        callback.onPhotosLoaded(photos);
+    }
 
     public double locationConversion(String data){
 
