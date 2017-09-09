@@ -99,7 +99,6 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
         getDevicePhotosTask.execute();
     }
 
-
     @Override
     public void onPhotosLoaded(ArrayList<PhotoObject> photos) {
         this.photos.remove(12);
@@ -155,17 +154,9 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-            saveImageToGallery(image);
+            saveImageToGallery(image, System.currentTimeMillis() + ".jpg");
 
             imagePickerListener.onCameraClicked(image);
-        }
-    }
-
-    public void saveImageToGallery(Bitmap bitmap) {
-        //Save to internal storage
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED) {
-            MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, System.currentTimeMillis() + ".jpg", "");
         }
     }
 
@@ -191,5 +182,17 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
 
     public void addOnClickListener(ImagePickerListener listener) {
         this.imagePickerListener = listener;
+    }
+
+    public void saveImageToGallery(Bitmap bitmap, String name) {
+        //Save to internal storage
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED) {
+            MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, name, "");
+        }
+    }
+
+    public void disableDefaultCameraFunction(boolean status){
+        DISABLE_CAMERA_DEFAULT = status;
     }
 }
