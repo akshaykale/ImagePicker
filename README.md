@@ -14,6 +14,7 @@ dependencies {
 ```
 <br>
 <br>
+
 ### Usage
 
 ImagePicker view can be loaded directly as a DialogFragment.
