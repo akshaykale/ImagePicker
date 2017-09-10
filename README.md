@@ -4,7 +4,7 @@
 
 
 ## Demo [Video](https://youtu.be/ip0RlWPMN4k) 
-![](https://raw.githubusercontent.com/akshaykale/ImagePicker/blob/master/media/demo_gif.gif "Demo gif")
+![](https://raw.githubusercontent.com/akshaykale/ImagePicker/master/media/demo_gif.gif "Demo gif")
 
 
 <br>
