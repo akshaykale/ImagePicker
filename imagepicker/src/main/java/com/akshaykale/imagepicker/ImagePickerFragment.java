@@ -157,9 +157,21 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
+            if (data == null){
+                imagePickerListener.onCameraClicked(null);
+                return;
+            }
+            Bundle extras = data.getExtras();
+            if (extras == null){
+                imagePickerListener.onCameraClicked(null);
+                return;
+            }
+            Bitmap image = (Bitmap) extras.get("data");
+            if (image == null){
+                imagePickerListener.onCameraClicked(null);
+                return;
+            }
             saveImageToGallery(image, System.currentTimeMillis() + ".jpg");
-
             imagePickerListener.onCameraClicked(image);
         }
     }
@@ -201,6 +213,8 @@ public class ImagePickerFragment extends DialogFragment implements IDevicePhotoL
     }
 
     public void setImageLoadEngine(ImageLoadEngine engine){
+        if (engine == null)
+            return;
         imageLoadEngine = engine;
     }
 }
