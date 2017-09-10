@@ -1,6 +1,12 @@
 # GalleryAndCameraImagePicker
 
 
+
+
+## Demo [Video](https://youtu.be/ip0RlWPMN4k) 
+![](https://raw.githubusercontent.com/akshaykale/ImagePicker/blob/master/media/demo_gif.gif "Demo gif")
+
+
 <br>
 
 ### Install
@@ -13,13 +19,11 @@ dependencies {
 }
 ```
 <br>
-<br>
 
 ### Usage
 
 ImagePicker view can be loaded directly as a DialogFragment.
 
-<br>
 <br>
 
 #### MainActivity.java
