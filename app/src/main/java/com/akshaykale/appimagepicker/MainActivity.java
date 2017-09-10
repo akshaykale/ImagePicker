@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerListen
 
     @Override
     public void onPhotoClicked(PhotoObject photoObject) {
-        imageView.setImageDrawable(null);
+        Glide.with(getApplicationContext()).clear(imageView);
         Glide.with(getApplicationContext())
                 .load(photoObject.getPath())
                 .into(imageView);

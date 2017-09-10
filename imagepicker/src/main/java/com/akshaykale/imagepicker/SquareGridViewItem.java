@@ -7,7 +7,7 @@ import android.util.AttributeSet;
  * Created by akshay.kale on 01/09/2017.
  */
 
-class SquareGridViewItem extends android.support.v7.widget.AppCompatImageView {
+public class SquareGridViewItem extends android.support.v7.widget.AppCompatImageView {
     public SquareGridViewItem(Context context) {
         super(context);
         setUp();
