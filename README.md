@@ -1,6 +1,54 @@
 # GalleryAndCameraImagePicker
 
 
+<br>
+
+### Install
+
+Add following to application level ```build.gradle``` file<br>
+```
+dependencies {
+    //...
+    compile 'com.akshaykale.android:imagepicker:1.0'
+}
+```
+<br>
+<br>
+### Usage
+
+ImagePicker view can be loaded directly as a DialogFragment.
+
+<br>
+<br>
+
+#### MainActivity.java
+
+```
+// instantiate the TimelineFragment
+ImagePickerFragment imagePickerFragment = new ImagePickerFragment();
+
+FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+//add on click lictener
+imagePickerFragment.addOnClickListener(new ImagePickerListener() {
+                @Override
+                public void onPhotoClicked(PhotoObject photoObject) {
+                    
+                }
+
+                @Override
+                public void onCameraClicked(Bitmap image) {
+
+                }
+            });
+
+imagePickerFragment.show(ft, "dialog");
+
+```
+<br>
+<br>
+<br>
+
 ```
 MIT License
 
