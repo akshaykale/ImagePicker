@@ -30,7 +30,7 @@ ImagePicker view can be loaded directly as a DialogFragment.
 #### MainActivity.java
 
 ```
-// instantiate the TimelineFragment
+// instantiate the ImagePicker dialog fragment
 ImagePickerFragment imagePickerFragment = new ImagePickerFragment();
 
 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
