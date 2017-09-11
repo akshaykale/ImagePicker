@@ -1,9 +1,10 @@
 # GalleryAndCameraImagePicker
 
+Android ImagePicker library use to choose images from Gallery and also provide an option to capture image from camera.
 
+<br>
 
-
-## Demo [Video](https://youtu.be/ip0RlWPMN4k) 
+### Demo [Video](https://youtu.be/ip0RlWPMN4k) 
 ![](https://raw.githubusercontent.com/akshaykale/ImagePicker/master/media/demo_gif.gif "Demo gif")
 
 
@@ -51,6 +52,34 @@ imagePickerFragment.show(ft, "dialog");
 
 ```
 <br>
+
+#### Use different image loading library
+
+For Image loading this library uses Picasso, But you can use any library you preffer to load the image.
+For this, create a class ```ImageLoad``` which  ```implements ImageLoadingEngine``` 
+```
+public class ImageLoad implements ImageLoadingEngine {
+    @Override
+    public void onLoadImage(ImageView imageView, String uri) {
+          // Use any library you prefer to load the image into the view
+    }
+}
+```
+And before loading the fragment into the container add following line of code.<br>
+```mFragment.setImageLoadEngine(new ImageLoad(getApplicationContext()));```
+
+<br>
+
+#### Configuration
+
+| Function | Usage |
+|---|---|
+|```addOnClickListener();```| Implement click events on the photos or camera <br>1. ```void onPhotoClicked(PhotoObject photoObject) {...}``` <br>2. ```void onCameraClicked(Bitmap image) {...}```|
+|```disableDefaultCameraFunction(boolean status)```| Will not open the camera and on clicking the camera option will return null bitmap, So that you can implement any thing you want.|
+|```disableDefaultCameraButton(boolean status)```| Will hide the camera button and only show Gallery images.|
+|```void setImageLoadEngine(ImageLoadEngine engine)```| Set the custom login to load image into the recycler view. By default ImagePicker uses Glide 4.x, and has optimized memory management.|
+|```void saveImageToGallery(Bitmap bitmap, String name)```| Will save the bitmap to default gallery. ```name``` will be the name of the file with extension.<br>Ex: ```new_img.jpg```|
+
 <br>
 <br>
 
