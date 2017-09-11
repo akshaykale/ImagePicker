@@ -1,4 +1,4 @@
-# GalleryAndCameraImagePicker
+# ImagePicker
 
 Android ImagePicker library use to choose images from Gallery and also provide an option to capture image from camera.
 
