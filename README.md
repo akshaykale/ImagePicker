@@ -65,8 +65,8 @@ public class ImageLoad implements ImageLoadingEngine {
     }
 }
 ```
-And before loading the fragment into the container add following line of code.<br>
-```mFragment.setImageLoadEngine(new ImageLoad(getApplicationContext()));```
+And before showing the DialogFragment, add following line of code.<br>
+```imagePickerFragment.setImageLoadEngine(new ImageLoad());```
 
 <br>
 
