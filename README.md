@@ -71,14 +71,15 @@ And before showing the DialogFragment, add following line of code.<br>
 <br>
 
 #### PhotoObject
+
 | Functions | Details |
 |---|---|
-| ```String getName()``` | Name the the file |
-| ```String getPath()``` | Path of the file |
-| ```String getCreated_timestamp()``` | Timestamp of the date created of the file |
-| ```String getPicasa_id()```| Picasa id associated with photo. ```null``` if no picasa id is found|
-| ```double getLat()``` | Latitude of the photo |
-| ```double getLng()``` | Longitude of the photo |
+|```String getName()``` | Name the the file |
+|```String getPath()``` | Path of the file |
+|```String getCreated_timestamp()``` | Timestamp of the date created of the file |
+|```String getPicasa_id()```| Picasa id associated with photo. ```null``` if no picasa id is found|
+|```double getLat()``` | Latitude of the photo |
+|```double getLng()``` | Longitude of the photo |
 
 <br>
 
