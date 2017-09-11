@@ -55,7 +55,7 @@ imagePickerFragment.show(ft, "dialog");
 
 #### Use different image loading library
 
-For Image loading this library uses Picasso, But you can use any library you preffer to load the image.
+For Image loading this library uses Glide 4.x, But you can use any logic you preffer to load the image.
 For this, create a class ```ImageLoad``` which  ```implements ImageLoadingEngine``` 
 ```
 public class ImageLoad implements ImageLoadingEngine {
