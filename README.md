@@ -94,6 +94,12 @@ And before showing the DialogFragment, add following line of code.<br>
 |```void saveImageToGallery(Bitmap bitmap, String name)```| Will save the bitmap to default gallery. ```name``` will be the name of the file with extension.<br>Ex: ```new_img.jpg```|
 
 
+<br>
+
+#### TODO
+> Other application support like Google Photos, Drive, etc.
+> Image Crop functionality
+
 
 <br>
 <br>
